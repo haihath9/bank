@@ -82,7 +82,7 @@ body{
 
   border-radius:50%;
 
-  background:rgba(0,0,0,.75);
+  background:rgba(0,0,0,.78);
 
   color:#fff;
 
@@ -132,10 +132,12 @@ body{
 
   z-index:9999;
 
-  transition:.28s ease;
-
   backdrop-filter:blur(12px);
+
+  transition:.28s ease;
 }
+
+/* HIDDEN */
 
 .bank-panel.hidden{
 
@@ -183,8 +185,7 @@ body{
 
   cursor:pointer;
 
-  transition:
-    .22s ease;
+  transition:.22s ease;
 
   white-space:nowrap;
 }
@@ -224,8 +225,8 @@ body{
   #image-display{
 
     padding:10px;
-    padding-top:65px;
-    padding-bottom:90px;
+    padding-top:70px;
+    padding-bottom:85px;
   }
 
   #current-image{
@@ -290,7 +291,7 @@ body{
   id="toggleBtn"
   onclick="togglePanel()"
 >
-✕
+☰
 </button>
 
 
@@ -300,7 +301,7 @@ body{
 
   <img
     id="current-image"
-    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcUtidiDcMVgBXoCScOSjTd4noYqRp-1iNlPXQToTy3j5fErp4mCDs0KXYkUWS75t1Fb__5-8qFbTP6kgbwQeDeAJ_l3GhtOuyqqNwly5JlqLTvo8tPUQz7yRtEkrhM1dS88SbxWJ1owvpfm9mxpPUr8u3sqdxrYhQiY0IYjWNCEsQtVl4jM7knbSN_Rw/s16000/tech886.jpg"
+    src="https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/tech886.jpg"
     alt="QR BANK"
   >
 
@@ -310,7 +311,7 @@ body{
 <!-- BANK PANEL -->
 
 <div
-  class="bank-panel"
+  class="bank-panel hidden"
   id="bankPanel"
 >
 
@@ -384,7 +385,7 @@ body{
 
 const images = {
 
-'Tech 886':'https://www.videos.quahai.com/tools/bank/image/tech886.jpg',
+'Tech 886':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/tech886.jpg',
 
 'Techcombank':'https://www.videos.quahai.com/tools/bank/image/tech250.jpg',
 
@@ -448,7 +449,6 @@ const toggleBtn = document.getElementById('toggleBtn');
 
 const image = document.getElementById('current-image');
 
-
 //////////////////////////////////////////////////////
 // TOGGLE PANEL
 //////////////////////////////////////////////////////
@@ -468,7 +468,6 @@ function togglePanel(){
   }
 
 }
-
 
 //////////////////////////////////////////////////////
 // SELECT BANK
@@ -514,7 +513,6 @@ function selectBank(name, element){
   toggleBtn.innerHTML = '☰';
 
 }
-
 
 //////////////////////////////////////////////////////
 // DEFAULT ACTIVE
