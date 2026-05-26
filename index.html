@@ -1,0 +1,541 @@
+```html
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>NGUYEN HAI HA QR BANK</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  font-family:Arial,sans-serif;
+  background:#f3f5f7;
+}
+
+/* =========================
+   IMAGE AREA
+========================= */
+
+#image-display{
+
+  width:100%;
+  height:100vh;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+}
+
+#current-image{
+
+  max-width:100%;
+  max-height:100%;
+
+  object-fit:contain;
+
+  border-radius:18px;
+
+  background:#fff;
+
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.12);
+
+  transition:.25s ease;
+}
+
+/* =========================
+   FLOAT BUTTON
+========================= */
+
+.float-btn{
+
+  position:fixed;
+
+  top:12px;
+  right:12px;
+
+  width:44px;
+  height:44px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,.75);
+
+  color:#fff;
+
+  font-size:22px;
+
+  cursor:pointer;
+
+  z-index:99999;
+
+  display:flex;
+
+  align-items:center;
+  justify-content:center;
+
+  backdrop-filter:blur(8px);
+
+  transition:.22s ease;
+}
+
+.float-btn:hover{
+
+  transform:scale(1.08);
+
+  background:#007bff;
+}
+
+/* =========================
+   BANK PANEL
+========================= */
+
+.bank-panel{
+
+  position:fixed;
+
+  bottom:0;
+  left:0;
+
+  width:100%;
+
+  padding:14px;
+
+  background:
+    rgba(255,255,255,.97);
+
+  border-top:
+    1px solid rgba(0,0,0,.08);
+
+  z-index:9999;
+
+  transition:.28s ease;
+
+  backdrop-filter:blur(12px);
+}
+
+.bank-panel.hidden{
+
+  transform:translateY(115%);
+}
+
+/* =========================
+   BANK MENU
+========================= */
+
+.bank-menu{
+
+  width:100%;
+
+  max-width:1400px;
+
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+    repeat(auto-fill,minmax(110px,1fr));
+
+  gap:10px;
+}
+
+/* BUTTON */
+
+.bank-menu button{
+
+  padding:12px 10px;
+
+  border:none;
+
+  border-radius:14px;
+
+  background:
+    rgba(245,245,245,.95);
+
+  color:#111;
+
+  font-size:14px;
+
+  font-weight:600;
+
+  cursor:pointer;
+
+  transition:
+    .22s ease;
+
+  white-space:nowrap;
+}
+
+/* HOVER */
+
+.bank-menu button:hover{
+
+  background:#007bff;
+
+  color:#fff;
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 0 18px rgba(0,123,255,.28);
+}
+
+/* ACTIVE */
+
+.bank-menu button.active{
+
+  background:#007bff;
+
+  color:#fff;
+
+  box-shadow:
+    0 0 18px rgba(0,123,255,.35);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width:768px){
+
+  #image-display{
+
+    padding:10px;
+    padding-top:65px;
+    padding-bottom:90px;
+  }
+
+  #current-image{
+
+    border-radius:14px;
+  }
+
+  .bank-panel{
+
+    padding:10px;
+  }
+
+  .bank-menu{
+
+    grid-template-columns:
+      repeat(4,1fr);
+
+    gap:8px;
+  }
+
+  .bank-menu button{
+
+    padding:10px 4px;
+
+    font-size:12px;
+
+    border-radius:10px;
+  }
+
+  .float-btn{
+
+    width:42px;
+    height:42px;
+
+    font-size:20px;
+  }
+
+}
+
+@media (max-width:480px){
+
+  .bank-menu button{
+
+    font-size:11px;
+
+    padding:9px 3px;
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- FLOAT BUTTON -->
+
+<button
+  class="float-btn"
+  id="toggleBtn"
+  onclick="togglePanel()"
+>
+✕
+</button>
+
+
+<!-- IMAGE -->
+
+<div id="image-display">
+
+  <img
+    id="current-image"
+    src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhcUtidiDcMVgBXoCScOSjTd4noYqRp-1iNlPXQToTy3j5fErp4mCDs0KXYkUWS75t1Fb__5-8qFbTP6kgbwQeDeAJ_l3GhtOuyqqNwly5JlqLTvo8tPUQz7yRtEkrhM1dS88SbxWJ1owvpfm9mxpPUr8u3sqdxrYhQiY0IYjWNCEsQtVl4jM7knbSN_Rw/s16000/tech886.jpg"
+    alt="QR BANK"
+  >
+
+</div>
+
+
+<!-- BANK PANEL -->
+
+<div
+  class="bank-panel"
+  id="bankPanel"
+>
+
+  <div
+    class="bank-menu"
+    id="bankMenu"
+  >
+
+<button onclick="selectBank('Tech 886',this)">Tech 886</button>
+
+<button onclick="selectBank('Techcombank',this)">Tech 250</button>
+
+<button onclick="selectBank('ACB',this)">ACBH</button>
+
+<button onclick="selectBank('ACB 2',this)">ACBD</button>
+
+<button onclick="selectBank('VPBank',this)">VPBank</button>
+
+<button onclick="selectBank('TIMO',this)">Timo</button>
+
+<button onclick="selectBank('MSB',this)">MSB</button>
+
+<button onclick="selectBank('VIB',this)">VIB 8789</button>
+
+<button onclick="selectBank('VIB 8386',this)">VIB 8386</button>
+
+<button onclick="selectBank('TECH 8012',this)">TECH 8012</button>
+
+<button onclick="selectBank('VPB HIEU',this)">VPB Hieu</button>
+
+<button onclick="selectBank('BVB',this)">BVB</button>
+
+<button onclick="selectBank('BIDV',this)">BIDV</button>
+
+<button onclick="selectBank('ME',this)">ME</button>
+
+<button onclick="selectBank('HANG',this)">HANG</button>
+
+<button onclick="selectBank('CHIEN',this)">Chien</button>
+
+<button onclick="selectBank('MB',this)">MBB</button>
+
+<button onclick="selectBank('NCB',this)">NCB</button>
+
+<button onclick="selectBank('VCB',this)">VCB</button>
+
+<button onclick="selectBank('VIKKI',this)">VIKKI</button>
+
+<button onclick="selectBank('CAKE',this)">CAKE</button>
+
+<button onclick="selectBank('OCB',this)">OCB</button>
+
+<button onclick="selectBank('WONRI',this)">WONRI</button>
+
+<button onclick="selectBank('HIEU TECH',this)">HIEU TECH</button>
+
+<button onclick="selectBank('TPB',this)">TPB</button>
+
+<button onclick="selectBank('MBV',this)">MBV</button>
+
+  </div>
+
+</div>
+
+
+<script>
+
+//////////////////////////////////////////////////////
+// IMAGE DATA
+//////////////////////////////////////////////////////
+
+const images = {
+
+'Tech 886':'https://www.videos.quahai.com/tools/bank/image/tech886.jpg',
+
+'Techcombank':'https://www.videos.quahai.com/tools/bank/image/tech250.jpg',
+
+'ACB':'https://www.videos.quahai.com/tools/bank/image/ACBH.jpg',
+
+'ACB 2':'https://www.videos.quahai.com/tools/bank/image/ACBD.jpg',
+
+'VPBank':'https://www.videos.quahai.com/tools/bank/image/vpbank.jpg',
+
+'TIMO':'https://www.videos.quahai.com/tools/bank/image2/timo.jpg',
+
+'MSB':'https://www.videos.quahai.com/tools/bank/image/msb.jpg',
+
+'VIB':'https://www.videos.quahai.com/tools/bank/image/vib-6789.jpg',
+
+'VIB 8386':'https://www.videos.quahai.com/tools/bank/image/vib-8386.jpg',
+
+'TECH 8012':'https://www.videos.quahai.com/tools/bank/image/tech0812.jpg',
+
+'VPB HIEU':'https://www.videos.quahai.com/tools/bank/image/vpbhieu.jpg',
+
+'BVB':'https://www.videos.quahai.com/tools/bank/image2/bvb.jpg',
+
+'BIDV':'https://www.videos.quahai.com/tools/bank/image2/bidv.jpg',
+
+'ME':'https://www.videos.quahai.com/tools/bank/image/me.jpg',
+
+'HANG':'https://www.videos.quahai.com/tools/bank/image/hang.jpg',
+
+'CHIEN':'https://www.videos.quahai.com/tools/bank/image/chien.jpg',
+
+'MB':'https://www.videos.quahai.com/tools/bank/image/MB.jpg',
+
+'NCB':'https://www.videos.quahai.com/tools/bank/image/ncb.jpg',
+
+'VCB':'https://www.videos.quahai.com/tools/bank/image2/vcb.jpg',
+
+'VIKKI':'https://www.videos.quahai.com/tools/bank/image/vikki.jpg',
+
+'CAKE':'https://www.videos.quahai.com/tools/bank/image/cake.jpg',
+
+'OCB':'https://www.videos.quahai.com/tools/bank/image2/ocb.jpg',
+
+'WONRI':'https://www.videos.quahai.com/tools/bank/image2/wonri.jpg',
+
+'HIEU TECH':'https://www.videos.quahai.com/tools/bank/image2/hieu.jpg',
+
+'TPB':'https://www.videos.quahai.com/tools/bank/image2/tpb.jpg',
+
+'MBV':'https://www.videos.quahai.com/tools/bank/image2/mbv.jpg'
+
+};
+
+//////////////////////////////////////////////////////
+// ELEMENTS
+//////////////////////////////////////////////////////
+
+const panel = document.getElementById('bankPanel');
+
+const toggleBtn = document.getElementById('toggleBtn');
+
+const image = document.getElementById('current-image');
+
+
+//////////////////////////////////////////////////////
+// TOGGLE PANEL
+//////////////////////////////////////////////////////
+
+function togglePanel(){
+
+  panel.classList.toggle('hidden');
+
+  if(panel.classList.contains('hidden')){
+
+    toggleBtn.innerHTML = '☰';
+
+  }else{
+
+    toggleBtn.innerHTML = '✕';
+
+  }
+
+}
+
+
+//////////////////////////////////////////////////////
+// SELECT BANK
+//////////////////////////////////////////////////////
+
+function selectBank(name, element){
+
+  const url = images[name];
+
+  if(!url){
+
+    alert('Không tìm thấy ảnh');
+
+    return;
+  }
+
+  image.src = url;
+
+  //////////////////////////////////////////////////////
+  // ACTIVE BUTTON
+  //////////////////////////////////////////////////////
+
+  document
+    .querySelectorAll('.bank-menu button')
+    .forEach(btn => {
+
+      btn.classList.remove('active');
+
+    });
+
+  if(element){
+
+    element.classList.add('active');
+
+  }
+
+  //////////////////////////////////////////////////////
+  // AUTO HIDE MENU
+  //////////////////////////////////////////////////////
+
+  panel.classList.add('hidden');
+
+  toggleBtn.innerHTML = '☰';
+
+}
+
+
+//////////////////////////////////////////////////////
+// DEFAULT ACTIVE
+//////////////////////////////////////////////////////
+
+window.addEventListener('load', () => {
+
+  const firstBtn =
+    document.querySelector('.bank-menu button');
+
+  if(firstBtn){
+
+    firstBtn.classList.add('active');
+
+  }
+
+});
+
+</script>
+
+</body>
+</html>
+```
