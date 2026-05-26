@@ -4,8 +4,8 @@
 <head>
 
 <meta charset="UTF-8">
-<meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
 
 <title>NGUYEN HAI HA QR BANK</title>
 
@@ -61,7 +61,13 @@ body{
   box-shadow:
     0 10px 30px rgba(0,0,0,.12);
 
-  transition:.25s ease;
+  transition:
+    opacity .18s ease,
+    transform .18s ease;
+
+  will-change:opacity,transform;
+
+  opacity:1;
 }
 
 /* =========================
@@ -301,8 +307,10 @@ body{
 
   <img
     id="current-image"
-    src="https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/tech886.jpg"
+    src="https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/tech886.jpg"
     alt="QR BANK"
+    decoding="async"
+    fetchpriority="high"
   >
 
 </div>
@@ -385,59 +393,71 @@ body{
 
 const images = {
 
-'Tech 886':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/tech886.jpg',
+'Tech 886':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/tech886.jpg',
 
-'Techcombank':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/tech250.jpg',
+'Techcombank':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/tech250.jpg',
 
-'ACB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/ACBH.jpg',
+'ACB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/ACBH.jpg',
 
-'ACB 2':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/ACBD.jpg',
+'ACB 2':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/ACBD.jpg',
 
-'VPBank':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/vpbank.jpg',
+'VPBank':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/vpbank.jpg',
 
-'TIMO':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/timo.jpg',
+'TIMO':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/timo.jpg',
 
-'MSB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/msb.jpg',
+'MSB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/msb.jpg',
 
-'VIB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/vib-6789.jpg',
+'VIB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/vib-6789.jpg',
 
-'VIB 8386':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/vib-8386.jpg',
+'VIB 8386':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/vib-8386.jpg',
 
-'TECH 8012':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/tech0812.jpg',
+'TECH 8012':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/tech0812.jpg',
 
-'VPB HIEU':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/vpbhieu.jpg',
+'VPB HIEU':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/vpbhieu.jpg',
 
-'BVB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/bvb.jpg',
+'BVB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/bvb.jpg',
 
-'BIDV':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/bidv.jpg',
+'BIDV':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/bidv.jpg',
 
-'ME':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/me.jpg',
+'ME':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/me.jpg',
 
-'HANG':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/hang.jpg',
+'HANG':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/hang.jpg',
 
-'CHIEN':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/chien.jpg',
+'CHIEN':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/chien.jpg',
 
-'MB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/MB.jpg',
+'MB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/MB.jpg',
 
-'NCB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/ncb.jpg',
+'NCB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/ncb.jpg',
 
-'VCB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/vcb.jpg',
+'VCB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/vcb.jpg',
 
-'VIKKI':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/vikki.jpg',
+'VIKKI':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/vikki.jpg',
 
-'CAKE':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image/cake.jpg',
+'CAKE':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image/cake.jpg',
 
-'OCB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/ocb.jpg',
+'OCB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/ocb.jpg',
 
-'WONRI':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/wonri.jpg',
+'WONRI':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/wonri.jpg',
 
-'HIEU TECH':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/hieu.jpg',
+'HIEU TECH':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/hieu.jpg',
 
-'TPB':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/tpb.jpg',
+'TPB':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/tpb.jpg',
 
-'MBV':'https://raw.githubusercontent.com/haihath9/bank/refs/heads/main/image2/mbv.jpg'
+'MBV':'https://cdn.jsdelivr.net/gh/haihath9/bank@main/image2/mbv.jpg'
 
 };
+
+//////////////////////////////////////////////////////
+// PRELOAD IMAGES
+//////////////////////////////////////////////////////
+
+Object.values(images).forEach(url => {
+
+  const img = new Image();
+
+  img.src = url;
+
+});
 
 //////////////////////////////////////////////////////
 // ELEMENTS
@@ -484,7 +504,27 @@ function selectBank(name, element){
     return;
   }
 
-  image.src = url;
+  //////////////////////////////////////////////////////
+  // FADE EFFECT
+  //////////////////////////////////////////////////////
+
+  image.style.opacity = '.25';
+
+  const newImg = new Image();
+
+  newImg.src = url;
+
+  newImg.onload = () => {
+
+    image.src = url;
+
+    requestAnimationFrame(() => {
+
+      image.style.opacity = '1';
+
+    });
+
+  };
 
   //////////////////////////////////////////////////////
   // ACTIVE BUTTON
